@@ -8,11 +8,10 @@ class Listproduk extends StatefulWidget {
   _ListprodukState createState() => _ListprodukState();
 }
 
-class _ListprodukState extends State<Listproduk> 
-  with SingleTickerProviderStateMixin {
-    TabController _tabController;
+class _ListprodukState extends State<Listproduk>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
   PageController _pageController;
-  int _selectedPage = 0;
 
   @override
   void initState() {
@@ -38,7 +37,6 @@ class _ListprodukState extends State<Listproduk>
           ),
         );
       },
-      
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -48,7 +46,6 @@ class _ListprodukState extends State<Listproduk>
             ),
           );
         },
-        
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
@@ -58,7 +55,7 @@ class _ListprodukState extends State<Listproduk>
                 color: Colors.blueGrey,
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              
+
               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 30.0),
               child: Stack(
                 children: <Widget>[
@@ -129,11 +126,9 @@ class _ListprodukState extends State<Listproduk>
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
-
             Positioned(
               bottom: 4.0,
               child: RawMaterialButton(
@@ -159,9 +154,9 @@ class _ListprodukState extends State<Listproduk>
   Widget build(BuildContext context) {
     //memberikan nama pada menu
     return Scaffold(
-    appBar: AppBar(
-      title: Text("List Produk"),
-    ),
+      appBar: AppBar(
+        title: Text("List Produk"),
+      ),
       backgroundColor: Colors.white,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
@@ -183,7 +178,7 @@ class _ListprodukState extends State<Listproduk>
               ),
             ),
             SizedBox(height: 20.0),
-            
+
             //menu kategori
             TabBar(
               controller: _tabController,
@@ -202,7 +197,6 @@ class _ListprodukState extends State<Listproduk>
                     ),
                   ),
                 ),
-
                 Tab(
                   child: Text(
                     'New',
@@ -212,7 +206,6 @@ class _ListprodukState extends State<Listproduk>
                     ),
                   ),
                 ),
-
                 Tab(
                   child: Text(
                     'Hots',
@@ -222,7 +215,6 @@ class _ListprodukState extends State<Listproduk>
                     ),
                   ),
                 ),
-
                 Tab(
                   child: Text(
                     'New Arrivals',
@@ -232,7 +224,6 @@ class _ListprodukState extends State<Listproduk>
                     ),
                   ),
                 ),
-
                 Tab(
                   child: Text(
                     'Limited Edition',
@@ -244,7 +235,7 @@ class _ListprodukState extends State<Listproduk>
                 ),
               ],
             ),
-            
+
             //ukuran box image
             SizedBox(height: 20.0),
             Container(
@@ -252,43 +243,10 @@ class _ListprodukState extends State<Listproduk>
               width: double.infinity,
               child: PageView.builder(
                 controller: _pageController,
-                onPageChanged: (int index) {
-                  setState(() {
-                    _selectedPage = index;
-                  });
-                },
                 itemCount: details.length,
                 itemBuilder: (BuildContext context, int index) {
                   return _produkSelector(index);
                 },
-              ),
-            ),
-
-            //memberikan jarak pada text description
-            Padding(
-              padding: EdgeInsets.all(30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Description',
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  
-                  //memberikan jarak antara description dan isi  descripsi
-                  SizedBox(height: 15.0),
-                  Text(
-                    details[_selectedPage].description,
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 16.0,
-                    ),
-                  ),
-
-                ],
               ),
             ),
           ],

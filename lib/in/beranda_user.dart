@@ -11,106 +11,99 @@ class _BerandaState extends State<Beranda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     //update AppBar
-        appBar: new AppBar(
-          title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Beranda'),
-              ]),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                print('Click search');
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.notifications_active),
-              onPressed: () {
-                print('Click start');
-              },
-            ),
-          ],
-        ), 
-        //widget Drawer
-        drawer: new Drawer(
-          //menggunakan listView agar drawer dapat melebihi width devices
-          child: new ListView(
-            children: <Widget>[
-              //Drawer Header diisi dengan informasi akun
-              new UserAccountsDrawerHeader(
-                accountName: new Text("Wisnawa"),
-                accountEmail: new Text("agus.wisnawa@undiksha.ac.id"),
-                currentAccountPicture: new GestureDetector(
-                  onTap: () {},
-                  child: new CircleAvatar(
-                    backgroundImage: AssetImage('assets/appimages/foto.jpg')
-                  ),
-                ), //memberi background pada Drawer Header
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/appimages/bg.jpg'),
-                      fit: BoxFit.cover),
-                ),
-              ), 
-              //Menu Drawer
-              new ListTile(
-                title: new Text('Notifications'),
-                trailing: new Icon(Icons.notifications_none),
+      //update AppBar
+      appBar: new AppBar(
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Text('Beranda'),
+        ]),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('Click search');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.notifications_active),
+            onPressed: () {
+              print('Click start');
+            },
+          ),
+        ],
+      ),
+      //widget Drawer
+      drawer: new Drawer(
+        //menggunakan listView agar drawer dapat melebihi width devices
+        child: new ListView(
+          children: <Widget>[
+            //Drawer Header diisi dengan informasi akun
+            new UserAccountsDrawerHeader(
+              accountName: new Text("Wisnawa"),
+              accountEmail: new Text("agus.wisnawa@undiksha.ac.id"),
+              currentAccountPicture: new GestureDetector(
+                onTap: () {},
+                child: new CircleAvatar(
+                    backgroundImage: AssetImage('assets/appimages/foto.jpg')),
+              ), //memberi background pada Drawer Header
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/appimages/bg.jpg'),
+                    fit: BoxFit.cover),
               ),
-              new ListTile(
-                title: new Text('Wishlist'),
-                trailing: new Icon(Icons.bookmark_border),
-              ),
+            ),
+            //Menu Drawer
+            new ListTile(
+              title: new Text('Notifications'),
+              trailing: new Icon(Icons.notifications_none),
+            ),
+            new ListTile(
+              title: new Text('Wishlist'),
+              trailing: new Icon(Icons.bookmark_border),
+            ),
 
-              //profile
-              new GestureDetector(
-                onTap: (){
-                  Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => MyProfile(
-                    )
-                    ));
-                },
-                child: new ListTile(
+            //profile
+            new GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => MyProfile()));
+              },
+              child: new ListTile(
                 title: new Text('Account'),
                 trailing: new Icon(Icons.verified_user),
-              ), 
               ),
-              
-              //Divider Menu
-              Divider(
-                height: 2,
-              ),
+            ),
 
-              //Input Data
-              new GestureDetector(
-                onTap: (){
-                  Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => Input(
-                    )
-                    ));
-                },
-                child: new ListTile(
+            //Divider Menu
+            Divider(
+              height: 2,
+            ),
+
+            //Input Data
+            new GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Input()));
+              },
+              child: new ListTile(
                 title: new Text('Input Data'),
                 trailing: new Icon(Icons.card_giftcard),
-              ), 
               ),
+            ),
 
-              new ListTile(
-                title: new Text('Settings'),
-                trailing: new Icon(Icons.settings),
-              ),
+            new ListTile(
+              title: new Text('Settings'),
+              trailing: new Icon(Icons.settings),
+            ),
+          ],
+        ),
+      ),
+      //seluruh body dibungkus column
+      //Tidak terdapat perubahan pada body beranda.dart latihan 4 /tugas 4 sebelumnya
 
-            ],
-          ),
-        ), 
-        //seluruh body dibungkus column 
-        //Tidak terdapat perubahan pada body beranda.dart latihan 4 /tugas 4 sebelumnya
-        
-        body: new Column(
+      body: new Column(
         children: <Widget>[
-          Image.asset("assets/appimages/gambar2.jpg"), 
+          Image.asset("assets/appimages/gambar2.jpg"),
           //setiap bagian pada body dipisahkan container
           Container(
             color: Colors.blueAccent[100],
@@ -230,7 +223,7 @@ class _BerandaState extends State<Beranda> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(15),
             child: Text(
               'Sakurasou no Pet na Kanojo adalah anime komedi romantis yang bercerita mengenai para penghuni asrama Sakurasou. Cerita akan berfokus pada Sorata Kanda, seorang siswa biasa yang memiliki kebiasaan memungut kucing liar, padahal asrama tempatnya tinggal melarang penghuninya membawa masuk binatang.',
               softWrap: true,

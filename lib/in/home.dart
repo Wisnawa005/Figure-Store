@@ -1,7 +1,7 @@
 //import 'package:ags_wis/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-import './beranda.dart' as beranda;
+import './beranda_user.dart' as beranda;
 import 'package:ags_wis/pages/listproduk.dart' as listproduk;
 
 // void main() {
@@ -54,6 +54,5 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         ),
       ),
     );
-
   }
 }

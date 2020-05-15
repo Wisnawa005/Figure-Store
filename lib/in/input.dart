@@ -13,7 +13,11 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
   Future<List> getData() async {
     final response =
-        await http.get('http://192.168.43.6/apiflutter/penjualan');
+        //untuk sambung ke hp
+        //  await http.get('http://192.168.43.6/apiflutter/penjualan');
+
+        //untuk sambung ke virtual
+        await http.get('http://10.0.2.2/apiflutter/penjualan');
     return json.decode(response.body);
   }
 
@@ -25,18 +29,21 @@ class _InputState extends State<Input> {
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
-        onPressed: ()=>Navigator.of(context).push(
-          new MaterialPageRoute(
-            builder: (BuildContext context)=> new AddData(),
-          )
-        ),
+        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new AddData(),
+        )),
       ),
       body: new FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData ? new ItemList(list: snapshot.data,)
-          : new Center(child: new CircularProgressIndicator(),);
+          return snapshot.hasData
+              ? new ItemList(
+                  list: snapshot.data,
+                )
+              : new Center(
+                  child: new CircularProgressIndicator(),
+                );
         },
       ),
     );
@@ -54,11 +61,11 @@ class ItemList extends StatelessWidget {
         return new Container(
           padding: const EdgeInsets.all(10.0),
           child: new GestureDetector(
-            onTap: ()=>Navigator.of(context).push(
-              new MaterialPageRoute(
-                builder: (BuildContext context)=> new Detail(list:list, index: i,)
-              )
-            ),
+            onTap: () => Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new Detail(
+                      list: list,
+                      index: i,
+                    ))),
             child: new Card(
               child: new ListTile(
                 title: new Text(list[i]['nama']),
@@ -67,7 +74,6 @@ class ItemList extends StatelessWidget {
               ),
             ),
           ),
-          
         );
       },
     );

@@ -16,23 +16,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
-    _mockCheckForSession().then(
-        (status) {
-          if (status) {
-            _navigateToHome();
-          } 
-          // else {
-          //   _navigateToLogin();
-          // }
-        }
-    );
+    _mockCheckForSession().then((status) {
+      if (status) {
+        _navigateToHome();
+      }
+      // else {
+      //   _navigateToLogin();
+      // }
+    });
   }
-
 
   Future<bool> _mockCheckForSession() async {
     await Future.delayed(Duration(milliseconds: 6000), () {});
@@ -40,12 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return true;
   }
 
-  void _navigateToHome(){
+  void _navigateToHome() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (BuildContext context) => MyApp()
-      )
-    );
+        MaterialPageRoute(builder: (BuildContext context) => MyApp()));
   }
 
   // void _navigateToLogin(){
@@ -64,10 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
           alignment: Alignment.center,
           children: <Widget>[
             Opacity(
-                opacity: 0.5,
-                child: Image.asset('assets/appimages/bg.jpg')
-            ),
-
+                opacity: 0.5, child: Image.asset('assets/appimages/bg.jpg')),
             Shimmer.fromColors(
               period: Duration(milliseconds: 1500),
               baseColor: Color(0xff7f00ff),
@@ -77,16 +67,14 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Text(
                   "Wishop",
                   style: TextStyle(
-                    fontSize: 70.0,
-                    fontFamily: 'Pacifico',
-                    shadows: <Shadow>[
-                      Shadow(
-                        blurRadius: 18.0,
-                        color: Colors.black87,
-                        offset: Offset.fromDirection(120, 12)
-                      )
-                    ]
-                  ),
+                      fontSize: 70.0,
+                      fontFamily: 'Pacifico',
+                      shadows: <Shadow>[
+                        Shadow(
+                            blurRadius: 18.0,
+                            color: Colors.black87,
+                            offset: Offset.fromDirection(120, 12))
+                      ]),
                 ),
               ),
             )
@@ -95,6 +83,4 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-
-
 }

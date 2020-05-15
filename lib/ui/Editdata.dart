@@ -3,50 +3,53 @@ import 'package:http/http.dart' as http;
 import 'package:ags_wis/in/input.dart';
 
 class EditData extends StatefulWidget {
-
   final List list;
   final int index;
-  
+
   EditData({this.list, this.index});
   @override
   _EditDataState createState() => _EditDataState();
 }
 
 class _EditDataState extends State<EditData> {
-
-  
   TextEditingController controllerNama;
   TextEditingController controllerKeterangan;
   TextEditingController controllerHarga;
   TextEditingController controllerStok;
 
-  void editData(){
-    var url="http://192.168.43.6/apiflutter/penjualan/save_update";
-    http.post(url,body: {
+  void editData() {
+    //untuk sambung ke hp
+    //var url = "http://192.168.43.6/apiflutter/penjualan/save_update";
+    // untuk sambung ke virtual
+    var url = "http://10.0.2.2/apiflutter/penjualan/save_update";
+    http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nama": controllerNama.text,
       "keterangan": controllerKeterangan.text,
       "harga": controllerHarga.text,
       "stok": controllerStok.text
     });
-
   }
-
 
   @override
   initState() {
-    controllerNama= new TextEditingController(text: widget.list[widget.index]['nama']);
-    controllerKeterangan= new TextEditingController(text: widget.list[widget.index]['keterangan']);
-    controllerHarga= new TextEditingController(text: widget.list[widget.index]['harga']);
-    controllerStok= new TextEditingController(text: widget.list[widget.index]['stok']);
+    controllerNama =
+        new TextEditingController(text: widget.list[widget.index]['nama']);
+    controllerKeterangan = new TextEditingController(
+        text: widget.list[widget.index]['keterangan']);
+    controllerHarga =
+        new TextEditingController(text: widget.list[widget.index]['harga']);
+    controllerStok =
+        new TextEditingController(text: widget.list[widget.index]['stok']);
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: new Text("EDIT TEXT"),),
+      appBar: new AppBar(
+        title: new Text("EDIT TEXT"),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
@@ -81,11 +84,8 @@ class _EditDataState extends State<EditData> {
                   color: Colors.blueAccent,
                   onPressed: () {
                     editData();
-                    Navigator.of(context).push(
-                      new MaterialPageRoute(
-                        builder: (BuildContext context)=>new Input()
-                      )
-                    );
+                    Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => new Input()));
                   },
                 )
               ],
@@ -93,7 +93,6 @@ class _EditDataState extends State<EditData> {
           ],
         ),
       ),
-      
     );
   }
 }

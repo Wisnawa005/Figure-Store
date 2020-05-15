@@ -46,7 +46,6 @@ final List<Detail> details = [
     description:
         'Pada tahun 2022, permainan Virtual Reality Massively Multiplayer Role-Playing online (VRMMORPG), Sword Art Online (SAO), diluncurkan. Dengan Nerve Gear, helm virtual reality yang merangsang panca indera pengguna melalui otak mereka, pemain dapat merasakan dan mengontrol karakter dalam game mereka dengan pikiran mereka.',
   ),
-
   Detail(
     image: 'assets/appimages/pic3.png',
     name: 'Kimi No Nawa',
@@ -56,7 +55,6 @@ final List<Detail> details = [
     description:
         'Mitsuha Miyamizu, seorang siswi sekolah menengah atas yang tinggal di desa fiktif bernama Itomori di daerah pegunungan Hida Prefektur Gifu, mulai bosan dengan kehidupannya di pedesaan tempat dia lahir dan berharap dapat terlahir menjadi pemuda tampan yang hidup di Tokyo pada kehidupan selanjutnya. Kemudian, Taki Tachibana, seorang siswa sekolah menengah atas yang tinggal di Tokyo, terbangun dari tidurnya dan menyadari bahwa dirinya adalah Mitsuha, yang entah bagaimana bisa masuk ke dalam tubuh Taki.',
   ),
-  
   Detail(
     image: 'assets/appimages/pic4.png',
     name: 'Tokyo Ghoul',

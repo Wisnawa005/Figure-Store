@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ags_wis/model/produk_model.dart';
 import 'package:flutter/services.dart';
+import 'package:ags_wis/model/produk_model.dart';
 
 class DetailProduk extends StatefulWidget {
   final Detail detail;
@@ -30,7 +30,7 @@ class _DetailProdukState extends State<DetailProduk> {
                       top: 60.0,
                     ),
                     height: 520.0,
-                    color: Colors.blueGrey,
+                    color: Colors.cyan,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -57,7 +57,7 @@ class _DetailProdukState extends State<DetailProduk> {
                           widget.detail.category.toUpperCase(),
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 17.0,
+                            fontSize: 15.0,
                           ),
                         ),
                         SizedBox(height: 5.0),
@@ -65,7 +65,7 @@ class _DetailProdukState extends State<DetailProduk> {
                           widget.detail.name,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 35.0,
+                            fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -74,15 +74,32 @@ class _DetailProdukState extends State<DetailProduk> {
                           'FROM',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 17.0,
+                            fontSize: 15.0,
                           ),
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          '\Rp. ${widget.detail.price}',
+                          '\$${widget.detail.price}',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 35.0,
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 40.0),
+                        Text(
+                          'SIZE',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15.0,
+                          ),
+                        ),
+                        SizedBox(height: 5.0),
+                        Text(
+                          widget.detail.size,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -97,7 +114,7 @@ class _DetailProdukState extends State<DetailProduk> {
                             color: Colors.white,
                             size: 35.0,
                           ),
-                          onPressed: () => print('Add to Cart'),
+                          onPressed: () => print('Add to cart'),
                         ),
                       ],
                     ),
@@ -108,8 +125,8 @@ class _DetailProdukState extends State<DetailProduk> {
                     child: Hero(
                       tag: widget.detail.image,
                       child: Image(
-                        height: 220.0,
-                        width: 220.0,
+                        height: 280.0,
+                        width: 280.0,
                         image: AssetImage(widget.detail.image),
                         fit: BoxFit.cover,
                       ),
@@ -137,7 +154,7 @@ class _DetailProdukState extends State<DetailProduk> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Description Product',
+                            'All to know...',
                             style: TextStyle(
                               fontSize: 24.0,
                               fontWeight: FontWeight.w600,
@@ -150,7 +167,40 @@ class _DetailProdukState extends State<DetailProduk> {
                               color: Colors.black87,
                               fontSize: 16.0,
                             ),
-                          )
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30.0,
+                        vertical: 40.0,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Details',
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            'Plant height: 35-45cm',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          Text(
+                            'Nursery pot width: 12cm',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black87,
+                            ),
+                          ),
                         ],
                       ),
                     ),

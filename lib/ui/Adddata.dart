@@ -7,22 +7,25 @@ class AddData extends StatefulWidget {
 }
 
 class _AddDataState extends State<AddData> {
-
   TextEditingController controllerNama = new TextEditingController();
   TextEditingController controllerKeterangan = new TextEditingController();
   TextEditingController controllerHarga = new TextEditingController();
   TextEditingController controllerStok = new TextEditingController();
 
-  void addData(){
-    var url="http://192.168.43.6/apiflutter/penjualan/save";
+  void addData() {
+    //untuk sambung ke hp
+    //var url = "http://192.168.43.6/apiflutter/penjualan/save";
+    //untuk sambung ke virtual
+    var url = "http://10.0.2.2/apiflutter/penjualan/save";
 
     http.post(url, body: {
-      "nama": controllerNama.text, 
+      "nama": controllerNama.text,
       "keterangan": controllerKeterangan.text,
       "harga": controllerHarga.text,
       "stok": controllerStok.text
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
