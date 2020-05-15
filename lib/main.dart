@@ -1,3 +1,5 @@
+import 'package:ags_wis/in/beranda_user.dart';
+//import 'package:ags_wis/ui/Berandaadmin.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:shimmer/shimmer.dart';
@@ -6,7 +8,7 @@ import 'package:ags_wis/in/home.dart';
 void main() {
   runApp(new MaterialApp(
     title: "MyApps",
-    home: new SplashScreen(),
+    home: new Beranda(),
   ));
 }
 

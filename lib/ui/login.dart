@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ags_wis/in/beranda_user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -42,9 +43,11 @@ class _MyHomePageState extends State<Login> {
       setState(() {
         //simpan preferences / session
         savePref(emailAPI, namaAPI, id, level, photo);
+        msg = datauser['msg'];
       });
       //level user redirect ke halaman user sebagai default
-      Navigator.pushReplacementNamed(context, '/Berandauser');
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => Beranda()));
     }
   }
 
@@ -117,7 +120,8 @@ class _MyHomePageState extends State<Login> {
                     onPressed: () {
                       _login();
                     },
-                  )
+                  ),
+                  Text(msg)
                 ],
               ),
             ),
