@@ -111,7 +111,7 @@ class _DetailState extends State<Detail> {
 
   Future<http.Response> deletePenjualan(id) async {
     final http.Response response = await http
-        .delete("http://192.168.43.6/apiflutter/penjualan/save_update/$id");
+        .delete("http://10.0.2.2/apiflutter/penjualan/save_update/$id");
 
     return response;
   }

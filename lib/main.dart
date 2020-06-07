@@ -1,14 +1,21 @@
-import 'package:ags_wis/in/beranda_user.dart';
-//import 'package:ags_wis/ui/Berandaadmin.dart';
+import 'package:ags_wis/in/home.dart';
+//import 'package:ags_wis/ui/login.dart';
+import 'package:ags_wis/ui/Berandaadmin.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:shimmer/shimmer.dart';
-import 'package:ags_wis/in/home.dart';
+//import 'package:ags_wis/in/home.dart';
+import 'package:ags_wis/ui/login.dart';
 
 void main() {
   runApp(new MaterialApp(
     title: "MyApps",
-    home: new Beranda(),
+    home: new SplashScreen(),
+    routes: <String, WidgetBuilder>{
+      '/ui/Berandaadmin': (BuildContext context) => new Berandaadmin(),
+      '/in/home': (BuildContext context) => new MyApp(),
+      '/ui/login': (BuildContext context) => new Login(),
+    },
   ));
 }
 
@@ -40,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHome() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => MyApp()));
+        MaterialPageRoute(builder: (BuildContext context) => Login()));
   }
 
   // void _navigateToLogin(){

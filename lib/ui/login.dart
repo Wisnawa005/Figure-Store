@@ -83,7 +83,7 @@ class _MyHomePageState extends State<Login> {
                     padding: EdgeInsets.only(top: 30),
                   ),
                   new Image.asset(
-                    'assets/appimages/logo.png',
+                    'assets/appimages/pic1.png',
                     width: 100,
                   ),
                   Container(
