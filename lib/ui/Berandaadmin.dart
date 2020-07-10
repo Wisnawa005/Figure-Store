@@ -12,7 +12,7 @@ class _BerandaadminState extends State<Berandaadmin> {
     setState(() {
       preferences.setInt("value", null);
     });
-    Navigator.pushNamed(context, '/login');
+    Navigator.pushNamed(context, '/ui/login');
   }
 
   @override

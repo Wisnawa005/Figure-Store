@@ -14,9 +14,9 @@ class _AddDataState extends State<AddData> {
 
   void addData() {
     //untuk sambung ke hp
-    //var url = "http://192.168.43.6/apiflutter/penjualan/save";
+    var url = "http://192.168.43.6/apiflutter/penjualan/save";
     //untuk sambung ke virtual
-    var url = "http://10.0.2.2/apiflutter/penjualan/save";
+    //var url = "http://10.0.2.2/apiflutter/penjualan/save";
 
     http.post(url, body: {
       "nama": controllerNama.text,

@@ -19,9 +19,9 @@ class _EditDataState extends State<EditData> {
 
   void editData() {
     //untuk sambung ke hp
-    //var url = "http://192.168.43.6/apiflutter/penjualan/save_update";
+    var url = "http://192.168.43.6/apiflutter/penjualan/save_update";
     // untuk sambung ke virtual
-    var url = "http://10.0.2.2/apiflutter/penjualan/save_update";
+    //var url = "http://10.0.2.2/apiflutter/penjualan/save_update";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nama": controllerNama.text,

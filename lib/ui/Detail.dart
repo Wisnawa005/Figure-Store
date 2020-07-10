@@ -3,6 +3,7 @@ import './editData.dart';
 import 'package:http/http.dart' as http;
 import 'package:ags_wis/in/input.dart';
 
+// ignore: must_be_immutable
 class Detail extends StatefulWidget {
   List list;
   int index;
@@ -14,9 +15,9 @@ class Detail extends StatefulWidget {
 class _DetailState extends State<Detail> {
   void deleteData(id) {
     //sambung ke hp
-    //var url = "http://192.168.43.6/apiflutter/penjualan/delete";
+    var url = "http://192.168.43.6/apiflutter/penjualan/delete";
     //sambung ke virtual
-    var url = "http://10.0.2.2/apiflutter/penjualan/delete";
+    // var url = "http://10.0.2.2/apiflutter/penjualan/delete";
     http.post(url, body: {'id': widget.list[widget.index]['id']});
   }
 

@@ -1,11 +1,19 @@
+//import 'package:ags_wis/in/home.dart';
 import 'package:ags_wis/ui/login.dart';
+//import 'package:ags_wis/ui/Berandaadmin.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:shimmer/shimmer.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "Figure Store",
+    title: "MyApps",
     home: new SplashScreen(),
+    //routes: <String, WidgetBuilder>{
+    //  '/ui/Berandaadmin': (BuildContext context) => new Berandaadmin(),
+    ///  '/in/home': (BuildContext context) => new MyApp(),
+    //  '/ui/login': (BuildContext context) => new Login(),
+    //},
   ));
 }
 
@@ -23,6 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
       if (status) {
         _navigateToHome();
       }
+      // else {
+      //   _navigateToLogin();
+      // }
     });
   }
 
@@ -36,6 +47,14 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => Login())); //MyApp
   }
+
+  // void _navigateToLogin(){
+  //   Navigator.of(context).pushReplacement(
+  //       MaterialPageRoute(
+  //           builder: (BuildContext context) => LoginScreen()
+  //       )
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Container(
                 padding: EdgeInsets.all(16.0),
                 child: Text(
-                  "Figur S",
+                  "Wishop",
                   style: TextStyle(
                       fontSize: 70.0,
                       fontFamily: 'Pacifico',

@@ -1,69 +1,64 @@
-import 'dart:async';
 import 'dart:convert';
-
-import 'package:ags_wis/in/home.dart';
+import 'package:ags_wis/in/beranda_user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Berandaadmin.dart';
+class Login extends StatefulWidget {
+  Login({Key key, this.title});
+  final String title;
 
-void main() => runApp(new Login());
-
-String username = '';
-
-class Login extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Login Figure Store',
-      home: new MyHomePage(),
-      routes: <String, WidgetBuilder>{
-        '/ui/Berandaadmin': (BuildContext context) => new Berandaadmin(),
-        '/in/home': (BuildContext context) => new MyApp(),
-        '/ui/login': (BuildContext context) => new Login(),
-      },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController user = new TextEditingController();
-  TextEditingController pass = new TextEditingController();
-
+class _MyHomePageState extends State<Login> {
+  TextEditingController usr = new TextEditingController();
+  TextEditingController psw = new TextEditingController();
   String msg = '';
 
-  Future<List> _login() async {
-    final response =
-        await http.post("http://192.168.43.6/apiflutter/login.php", body: {
-      "email": user.text,
-      "password": pass.text,
+  Future<void> _login() async {
+    final response = await http
+        .post("http://192.168.43.6/apiflutter/login_A/login_api", body: {
+      "username": usr.text,
+      "password": psw.text,
     });
 
     var datauser = json.decode(response.body);
 
-    if (datauser.length == 0) {
+    if (datauser['error'] == true) {
       setState(() {
-        msg = "Login Fail";
+        msg = datauser['msg'];
       });
     } else {
-      if (datauser[0]['level'] == 'admin') {
-        Navigator.pushReplacementNamed(context, '/ui/Berandaadmin');
-      } else if (datauser[0]['level'] == 'user') {
-        Navigator.pushReplacementNamed(context, '/in/home');
-      }
+      String emailAPI = datauser['email'];
+      String namaAPI = datauser['nama'];
+      String id = datauser['id'];
+      String photo = datauser['photo'];
+      int level = int.parse(datauser['level']);
 
       setState(() {
-        username = datauser[0]['email'];
+        savePref(emailAPI, namaAPI, id, level, photo);
+        msg = datauser['msg'];
       });
-    }
 
-    return datauser;
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => Beranda()));
+    }
+  }
+
+  //menyimpan data user dalam shared_preferences
+  savePref(
+      String email, String nama, String id, int level, String photo) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setString("nama", nama);
+      preferences.setString("email", email);
+      preferences.setString("id", id);
+      preferences.setInt("level", level);
+      preferences.setString("photo", photo);
+    });
   }
 
   @override
@@ -85,13 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.only(top: 30),
                   ),
                   new Image.asset(
-                    'assets/appimages/logo.png',
-                    width: 250,
+                    'assets/appimages/pic1.png',
+                    width: 100,
                   ),
                   Container(
                     padding: EdgeInsets.all(20),
                     child: TextField(
-                      controller: user,
+                      controller: usr,
                       decoration: InputDecoration(
                           focusColor: Colors.white,
                           hintText: "Username",
@@ -104,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.all(20),
                     child: TextField(
                       obscureText: true,
-                      controller: pass,
+                      controller: psw,
                       decoration: InputDecoration(
                           hintText: "Password",
                           labelText: "Password",
